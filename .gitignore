@@ -1,0 +1,11 @@
+.idea
+__pycache__
+migrations
+bower_components
+node_modules
+venv
+build
+dist
+~/Documents
+.DS_Store
+*.log
