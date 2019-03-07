@@ -25,6 +25,42 @@ def demo_test():
 ApiBlueprint 收集路由信息统一向 flask 注册，在注册路由的同时收集 API 的参数，错误码及响应的数据结构，然后集中存储在内存中，
 前端获取 Swagger json 的时候再把收集的数据按 Swagger 语法生成json格式字符串存储在内容中供访问
 
+```python
+
+
+    def boxing(cls, key, name, op_in='body', require=True, params_type='string', default=None):
+        """
+            通过参数生成api文档构造所需要的参数的模型的数据格式
+        :param key: 参数的键
+        :param name: 参数的描述信息
+        :param op_in: 参数所在的部分，取值为path，query，header，body，
+        :param require: 该参数是否是必须的，默认为必填
+        :param params_type: 参数的类型，默认为string，取值有 integer，string，boolean，number，array，object，注意文件类型也是用string
+        :param default: 参数的默认值，默认为None表示不显示默认值项
+        :return:
+        """
+
+
+
+    def route(self, rule, summary='', params=None, resp=None, errors=None, deprecated=False, **options):
+        """
+        :param rule: 路径, 注册的接口访问路径
+        :param summary: 接口的描述信息, 默认传递空字符串表示接口不写入文档
+        :param params: 接口参数声明，默认为None表示不需要参数，
+                    传递示例：[{'name': '参数名称', 'in': 'header', 'require': true, 'type': 'string'}, ...]
+
+        :param resp: 接口data域数据声明，数据返回的json格式，在数据的key之后需要以::间隔中文描述，
+                    例如： {'name::用户名': 'jeff', 'age::年龄': 17, 'account::用户账号': '1234567', ...}
+                    如果是最终值没有键的，可以传递一个tuple，表示第一位是描述，第二位是示例值
+                    例如: ('用户名', 'name')
+
+        :param errors: 接口错误声明，默认为None表示接口没有其他错误信息，传递示例：[(error_code, desc), ...]
+        :param deprecated: 接口已经废弃的标志
+        :param options: flask路由注册的其他参数
+        :return:
+        """
+```
+
 
 server 启动后，例如在 0.0.0.0:5000 下启动，则访问 http://127.0.0.1:5000/api 即可访问在线 api 文档
 
