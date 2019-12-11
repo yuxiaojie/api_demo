@@ -64,4 +64,4 @@ ApiBlueprint 收集路由信息统一向 flask 注册，在注册路由的同时
 
 server 启动后，例如在 0.0.0.0:5000 下启动，则访问 http://127.0.0.1:5000/api 即可访问在线 api 文档
 
-![FE90774DC916419A178D23A27F84FDF7](http://cdn.ibeelink.com/FE90774DC916419A178D23A27F84FDF7.png)
+![FE90774DC916419A178D23A27F84FDF7](https://cdn.ibeelink.com/FE90774DC916419A178D23A27F84FDF7.png)
