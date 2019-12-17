@@ -1,8 +1,55 @@
 # api_demo
+
 自动生成 Swagger API 文档
 
-demo:
 
+## 运行方式
+
+### 直接启动
+
+```shell
+
+pip3 install -r src/requirements.txt
+
+# 默认端口为 12345
+python3 server.py   
+
+# server 启动后，则访问 http://127.0.0.1:12345/api 即可访问在线 api 文档
+
+```
+
+### gunicorn 启动
+```shell
+
+pip3 install -r src/requirements.txt
+
+gunicorn -c gun.py server:app
+
+# server 启动后，则访问 http://127.0.0.1:12345/api 即可访问在线 api 文档
+```
+
+### docker 启动
+
+```shell
+
+# 本地需要安装并启动 docker 服务
+
+# 未安装 docker-compose 则需要安装
+pip3 install docker-compose
+
+docker-compose build 
+
+# 直接启动 
+docker-compose up
+
+# 后台启动
+docker-compose up -d
+
+```
+
+## 使用范例
+
+### view 实现方式
 ```python
 
 
@@ -22,6 +69,7 @@ def demo_test():
     return get_response('modify address success', data={})
 ```
 
+### view 注册
 ApiBlueprint 收集路由信息统一向 flask 注册，在注册路由的同时收集 API 的参数，错误码及响应的数据结构，然后集中存储在内存中，
 前端获取 Swagger json 的时候再把收集的数据按 Swagger 语法生成json格式字符串存储在内容中供访问
 
@@ -61,7 +109,6 @@ ApiBlueprint 收集路由信息统一向 flask 注册，在注册路由的同时
         """
 ```
 
-
-server 启动后，例如在 0.0.0.0:5000 下启动，则访问 http://127.0.0.1:5000/api 即可访问在线 api 文档
+### 效果图
 
 ![FE90774DC916419A178D23A27F84FDF7](http://cdn.ibeelink.com/FE90774DC916419A178D23A27F84FDF7.png)

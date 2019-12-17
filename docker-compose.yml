@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  api:
+    build: ./
+    command: gunicorn -c gun.py server:app
+    ports:
+      - 12345:12345
+    environment:
+      - SERVER_ENV={$SERVER_ENV}
+      - HOST_ID={$HOST_ID}
+    volumes:
+      - "/data/tissue:/var/log/tissue"
